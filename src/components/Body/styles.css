@@ -5,3 +5,32 @@
   color: white;
   background: linear-gradient(rgb(29, 42, 50), rgba(0, 0, 0, 1));
 }
+
+.body-info {
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+}
+
+.body-infoText {
+  flex: 1;
+}
+
+.body-infoText > h2 {
+  font-size: 96px;
+  margin-bottom: 10px;
+}
+
+.body-infoText > strong {
+  font-size: 12px;
+}
+
+.body-infoText > p {
+  font-size: 14px;
+}
+
+.body-info > img {
+  height: 20vh;
+  margin: 0 20px;
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+}
