@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import SpotifyWebApi from 'spotify-web-api-js';
 import Header from '../Header';
 import { useStateProviderValue } from '../../contexts/StateProvider';
 import './styles.css';
@@ -9,8 +10,20 @@ import {
 } from '@material-ui/icons';
 import SongRow from '../SongRow';
 
-function Body({ spotify }) {
-  const [{ discover_weekly }, dispatch] = useStateProviderValue();
+const spotify = new SpotifyWebApi();
+
+function Body() {
+  const [{ discover_weekly, token }, dispatch] = useStateProviderValue();
+
+  useEffect(() => {
+    spotify.setAccessToken(token);
+    spotify.getPlaylist('37i9dQZEVXcQliIQt1b9i3').then((response) => {
+      dispatch({
+        type: 'SET_DISCOVER_WEEKLY',
+        discover_weekly: response,
+      });
+    });
+  }, [dispatch, token]);
 
   return (
     <div className="body">

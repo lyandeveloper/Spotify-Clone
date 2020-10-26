@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import SpotifyWebApi from 'spotify-web-api-js';
 import SidebarOption from '../SidebarOption';
 import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
@@ -6,8 +7,19 @@ import LibraryIcon from '@material-ui/icons/LibraryMusic';
 import './styles.css';
 import { useStateProviderValue } from '../../contexts/StateProvider';
 
+const spotify = new SpotifyWebApi();
 function Sidebar() {
-  const [{ playlists }, dispatch] = useStateProviderValue();
+  const [{ playlists, token }, dispatch] = useStateProviderValue();
+
+  useEffect(() => {
+    spotify.setAccessToken(token);
+    spotify.getUserPlaylists({ limit: 50 }).then((playlists) => {
+      dispatch({
+        type: 'SET_PLAYLISTS',
+        playlists: playlists,
+      });
+    });
+  }, [dispatch, token]);
 
   return (
     <div className="sidebar">
