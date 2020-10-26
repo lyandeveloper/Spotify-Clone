@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import './styles.css';
 import { Avatar } from '@material-ui/core';
 import { useStateProviderValue } from '../../contexts/StateProvider';
-
+import SpotifyWebApi from 'spotify-web-api-js';
+const spotify = new SpotifyWebApi();
 function Header() {
   const [{ user }, dispatch] = useStateProviderValue();
+  useEffect(() => {
+    spotify.getMe().then((user) => {
+      dispatch({
+        type: 'SET_USER',
+        user: user,
+      });
+    });
+  }, [dispatch]);
   return (
     <div className="header">
       <div className="header-left">
