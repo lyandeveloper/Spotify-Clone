@@ -30,6 +30,13 @@ function App() {
           user: user,
         });
       });
+
+      spotify.getUserPlaylists({ limit: 50 }).then((playlists) => {
+        dispatch({
+          type: 'SET_PLAYLISTS',
+          playlists: playlists,
+        });
+      });
     }
   }, [dispatch, token, user]);
 
