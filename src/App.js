@@ -40,7 +40,9 @@ function App() {
     }
   }, [dispatch, token, user]);
 
-  return <div className="App">{token ? <Home /> : <Login />}</div>;
+  return (
+    <div className="App">{token ? <Home spotify={spotify} /> : <Login />}</div>
+  );
 }
 
 export default App;

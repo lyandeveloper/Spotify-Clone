@@ -5,12 +5,12 @@ import Sidebar from '../../components/Sidebar';
 
 import './styles.css';
 
-function Home() {
+function Home({ spotify }) {
   return (
     <div className="home">
       <div className="home-body">
         <Sidebar />
-        <Body />
+        <Body spotify={spotify} />
       </div>
       <Player />
     </div>
