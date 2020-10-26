@@ -10,6 +10,9 @@ function AppRoutes() {
         <Route exact path="/">
           <Home />
         </Route>
+        <Route path="/playlists/:playlistId">
+          <Home />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

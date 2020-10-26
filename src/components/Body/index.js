@@ -9,21 +9,23 @@ import {
   PlayCircleFilled,
 } from '@material-ui/icons';
 import SongRow from '../SongRow';
+import { useParams } from 'react-router-dom';
 
 const spotify = new SpotifyWebApi();
 
 function Body() {
+  const { playlistId } = useParams();
   const [{ discover_weekly, token }, dispatch] = useStateProviderValue();
 
   useEffect(() => {
     spotify.setAccessToken(token);
-    spotify.getPlaylist('37i9dQZEVXcQliIQt1b9i3').then((response) => {
+    spotify.getPlaylist(playlistId).then((response) => {
       dispatch({
         type: 'SET_DISCOVER_WEEKLY',
         discover_weekly: response,
       });
     });
-  }, [dispatch, token]);
+  }, [dispatch, playlistId, token]);
 
   return (
     <div className="body">

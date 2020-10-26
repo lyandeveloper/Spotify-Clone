@@ -1,13 +1,13 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import './styles.css';
 
-function SidebarOption({ option, Icon }) {
+function SidebarOption({ option, Icon, playlistId }) {
   return (
-    <div className="sidebarOption">
+    <Link to={`/playlists/${playlistId}`} className="sidebarOption">
       {Icon && <Icon className="sidebarOption-icon" />}
       {Icon ? <h4>{option}</h4> : <p>{option}</p>}
-    </div>
+    </Link>
   );
 }
 

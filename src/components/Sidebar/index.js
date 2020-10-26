@@ -10,7 +10,6 @@ import { useStateProviderValue } from '../../contexts/StateProvider';
 const spotify = new SpotifyWebApi();
 function Sidebar() {
   const [{ playlists, token }, dispatch] = useStateProviderValue();
-
   useEffect(() => {
     spotify.setAccessToken(token);
     spotify.getUserPlaylists({ limit: 50 }).then((playlists) => {
@@ -38,7 +37,11 @@ function Sidebar() {
       <hr />
 
       {playlists?.items?.map((playlist) => (
-        <SidebarOption key={playlist.id} option={playlist.name} />
+        <SidebarOption
+          key={playlist.id}
+          option={playlist.name}
+          playlistId={playlist.id}
+        />
       ))}
     </div>
   );

@@ -5,6 +5,7 @@
   padding-right: 10px;
   color: #fff;
   background-color: #040404;
+  overflow-y: overlay;
 }
 
 .sidebar-logo {
