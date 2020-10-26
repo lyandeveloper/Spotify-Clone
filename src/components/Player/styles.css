@@ -1,8 +1,90 @@
 .player {
   position: fixed;
   bottom: 0;
-  height: 65px;
+  height: 100px;
   width: 100%;
   background-color: #282828;
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.player-left {
+  flex: 0.12;
+  display: flex;
+  color: grey;
+  width: 300px;
+}
+
+.player-albumLogo {
+  height: 60px;
+  width: 60px;
+  margin-right: 20px;
+  object-fit: contain;
+}
+
+.player-center {
+  flex: 0.3;
+  padding: 0 100px;
+  color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 400px;
+}
+
+.player-songInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.player-songInfo > h4 {
+  margin-bottom: 5px;
+}
+
+.player-songInfo p {
+  font-size: 12px;
+}
+
+.player-right {
+  flex: 0.12;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: grey;
+}
+
+.player-icon:hover,
+.player-green:hover {
+  transition: transform 0.2s ease-in-out;
+  transform: scale(1.2) !important;
+}
+
+.player-right * .MuiSlider-thumb {
+  color: white;
+  display: none;
+}
+
+.player-right * .MuiSlider-track {
+  color: white;
+}
+
+.player-right * .MuiSlider-root {
+  color: grey;
+}
+.player-right * .MuiSlider-root:hover .MuiSlider-track {
+  color: #1ed15e;
+}
+
+.player-right * .MuiSlider-root:hover .MuiSlider-thumb {
+  display: block;
+}
+
+.player-green {
+  color: #1ed15e;
+}
+
+.player-right .MuiSlider-root {
+  width: 100px;
 }
