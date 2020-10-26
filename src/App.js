@@ -1,55 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
-import Login from './pages/Login';
 import { getTokenFromUrl } from './services/spotify';
 import SpotifyWebApi from 'spotify-web-api-js';
-import Home from './pages/Home';
 import { useStateProviderValue } from './contexts/StateProvider';
+import Routes from './routes';
 
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const [{ user, token }, dispatch] = useStateProviderValue();
-
+  const [{ token }] = useStateProviderValue();
   useEffect(() => {
     const hash = getTokenFromUrl();
     window.location.hash = '';
     const _token = hash.access_token;
 
     if (_token) {
-      dispatch({
-        type: 'SET_TOKEN',
-        token: _token,
-      });
+      localStorage.setItem('@RCAuth:token', _token);
 
-      spotify.setAccessToken(_token);
+      spotify.setAccessToken(token);
 
       spotify.getMe().then((user) => {
-        dispatch({
-          type: 'SET_USER',
-          user: user,
-        });
+        localStorage.setItem('@RCAuth:user', JSON.stringify(user));
       });
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-      spotify.getUserPlaylists({ limit: 50 }).then((playlists) => {
-        dispatch({
-          type: 'SET_PLAYLISTS',
-          playlists: playlists,
-        });
-      });
-
-      spotify.getPlaylist('37i9dQZEVXcQliIQt1b9i3').then((response) => {
-        dispatch({
-          type: 'SET_DISCOVER_WEEKLY',
-          discover_weekly: response,
-        });
-      });
-    }
-  }, [dispatch, token, user]);
-
-  return (
-    <div className="App">{token ? <Home spotify={spotify} /> : <Login />}</div>
-  );
+  return <Routes />;
 }
 
 export default App;
