@@ -3,16 +3,16 @@
 </h1>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/lyandeveloper/RSky">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/lyandeveloper/Spotify-Clone">
   
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/top/lyandeveloper/RSky">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/top/lyandeveloper/Spotify-Clone">
 
-  <a href="https://github.com/lyandeveloper/RSky/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/lyandeveloper/RSky">
+  <a href="https://github.com/lyandeveloper/Spotify-Clone/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/lyandeveloper/Spotify-Clone">
   </a>
 
-  <a href="https://github.com/lyandeveloper/RSky/issues">
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/lyandeveloper/RSky">
+  <a href="https://github.com/lyandeveloper/Spotify-Clone/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/lyandeveloper/Spotify-Clone">
   </a>
 
   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
