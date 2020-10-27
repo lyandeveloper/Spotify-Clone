@@ -3,10 +3,8 @@ export const initialState = {
   playlists: [],
   playing: false,
   item: null,
-  token: localStorage.getItem('@RCAuth:token'),
+  token: null,
 };
-
-console.log(localStorage.getItem('@RCAuth:token'));
 
 const reducer = (state, action) => {
   switch (action.type) {

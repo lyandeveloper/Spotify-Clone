@@ -6,13 +6,18 @@ import { useStateProviderValue } from '../../contexts/StateProvider';
 const spotify = new SpotifyWebApi();
 
 function Playlists() {
-  const [{ playlists, token }, dispatch] = useStateProviderValue();
+  const [{ playlists, token, loading }, dispatch] = useStateProviderValue();
   useEffect(() => {
     spotify.setAccessToken(token);
     spotify.getUserPlaylists({ limit: 50 }).then((playlists) => {
       dispatch({
         type: 'SET_PLAYLISTS',
         playlists: playlists,
+      });
+
+      dispatch({
+        type: 'SET_LOADING',
+        loading: true,
       });
     });
   }, [dispatch, token]);

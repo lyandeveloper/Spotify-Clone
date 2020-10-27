@@ -7,7 +7,7 @@ import { useStateProviderValue } from '../contexts/StateProvider';
 const spotify = new SpotifyWebApi();
 
 function AuthRoutes() {
-  const [{ token }] = useStateProviderValue();
+  const [{ token }, dispatch] = useStateProviderValue();
   useEffect(() => {
     const hash = getTokenFromUrl();
     window.location.hash = '';
@@ -15,9 +15,12 @@ function AuthRoutes() {
 
     if (_token) {
       spotify.setAccessToken(_token);
-      localStorage.setItem('@RCAuth:token', _token);
+      dispatch({
+        type: 'SET_TOKEN',
+        token: _token,
+      });
     }
-  }, [token]);
+  }, [dispatch, token]);
   return (
     <BrowserRouter>
       <Switch>
