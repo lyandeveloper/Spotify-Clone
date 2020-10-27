@@ -6,6 +6,8 @@ export const initialState = {
   token: localStorage.getItem('@RCAuth:token'),
 };
 
+console.log(localStorage.getItem('@RCAuth:token'));
+
 const reducer = (state, action) => {
   switch (action.type) {
     case 'SET_USER':
